@@ -1,0 +1,183 @@
+<app-menu></app-menu>
+<div class="container" *ngIf="entidad">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="text-left" style="text-transform: uppercase;"><b>ACTUALIZAR ENTIDAD</b></h4>
+        </div>
+        <form (ngSubmit)="onUpdate()" novalidate [formGroup]="entidadForm">
+            <div class="card-body">
+                <div class="text-left mb-2">
+                    <span><b>Actualizar datos:</b></span>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="tipocontribuyente">Tipo Documento <span class="text-danger">(*)</span></label>
+                            <select name="id_tipodocumento" id="id_tipodocumento" class="form-control"
+                                formControlName="id_tipodocumento"
+                                [(ngModel)]="entidad.tipodocumento.id_tipo_documento">
+                                <option [value]="tipodocumento.id_tipo_documento"
+                                    *ngFor="let tipodocumento of tiposdocumentos">
+                                    <td>{{ tipodocumento.nombre }}</td>
+                                </option>
+                            </select>
+
+                            <div class="alert alert-danger mt-2"
+                                *ngIf="id_tipodocumento.invalid && (id_tipodocumento.dirty || id_tipodocumento.touched)">
+                                <div class="container-error-message" *ngIf="id_tipodocumento.errors.required">
+                                    (<b>Tipo Documento</b> es requerido)
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="nro_ocumento">Nro. documento <span class="text-danger">(*)</span></label>
+                            <input type="text" class="form-control" id="nrodocumento" name="nrodocumento"
+                                formControlName="nrodocumento" required maxlength="100"
+                                [(ngModel)]="entidad.nrodocumento">
+                            <div class="alert alert-danger mt-2"
+                                *ngIf="nrodocumento.invalid && (nrodocumento.dirty || nrodocumento.touched)">
+                                <div class="container-error-message" *ngIf="nrodocumento.errors.required">
+                                    (<b>Nro. documento</b> es requerido)
+                                </div>
+                                <div class="container-error-message" *ngIf="nrodocumento.errors.maxlength">
+                                    (<b>Nro. documento</b> tener como maximo 100 caracteres)
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="razonsocial">Razon Social <span class="text-danger">(*)</span></label>
+                            <input type="text" class="form-control" id="razonsocial" name="razonsocial"
+                                formControlName="razonsocial" required maxlength="100" minlength="20"
+                                [(ngModel)]="entidad.razonsocial">
+                            <div class="alert alert-danger mt-2"
+                                *ngIf="razonsocial.invalid && (razonsocial.dirty || razonsocial.touched)">
+                                <div class="container-error-message" *ngIf="razonsocial.errors.required">
+                                    (<b>Razon Social</b> es requerido)
+                                </div>
+                                <div class="container-error-message" *ngIf="razonsocial.errors.maxlength">
+                                    (<b>Razon Social</b> tener como maximo 100 caracteres)
+                                </div>
+                                <div class="container-error-message" *ngIf="razonsocial.errors.minlength">
+                                    (<b>Razon Social</b> tener como minimo 20 caracteres)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="nombrecomercial">Nombre Comercial <span class="text-danger">(*)</span></label>
+                            <input type="text" class="form-control" id="nombrecomercial" name="nombrecomercial"
+                                [(ngModel)]="entidad.nombrecomercial" formControlName="nombrecomercial" required
+                                maxlength="100" minlength="20">
+                            <div class="alert alert-danger mt-2"
+                                *ngIf="nombrecomercial.invalid && (nombrecomercial.dirty || nombrecomercial.touched)">
+                                <div class="container-error-message" *ngIf="nombrecomercial.errors.required">
+                                    (<b>Nombre Comercial</b> es requerido)
+                                </div>
+                                <div class="container-error-message" *ngIf="nombrecomercial.errors.maxlength">
+                                    (<b>Nombre Comercial</b> tener como maximo 100 caracteres)
+                                </div>
+                                <div class="container-error-message" *ngIf="nombrecomercial.errors.minlength">
+                                    (<b>Nombre Comercial</b> tener como minimo 20 caracteres)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            <label for="tipocontribuyente">Tipo Contribuyente <span
+                                    class="text-danger">(*)</span></label>
+                            <select name="id_tipocontribuyente" id="id_tipocontribuyente" class="form-control"
+                                [(ngModel)]="entidad.tipocontribuyente.id_tipo_contribuyente"
+                                formControlName="id_tipocontribuyente">
+                                <option [value]="tipocontribuyente.id_tipo_contribuyente"
+                                    *ngFor="let tipocontribuyente of tiposcontribuyentes">
+                                    <td>{{ tipocontribuyente.nombre }}</td>
+                                </option>
+                            </select>
+
+                            <div class="alert alert-danger mt-2"
+                                *ngIf="id_tipocontribuyente.invalid && (id_tipocontribuyente.dirty || id_tipocontribuyente.touched)">
+                                <div class="container-error-message" *ngIf="id_tipocontribuyente.errors.required">
+                                    (<b>Tipo Contribuyente</b> es requerido)
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="direccion">Direccion <span class="text-danger">(*)</span></label>
+                            <input type="text" class="form-control" id="direccion" name="direccion"
+                                formControlName="direccion" required maxlength="100" minlength="20"
+                                [(ngModel)]="entidad.direccion">
+                            <div class="alert alert-danger mt-2"
+                                *ngIf="direccion.invalid && (direccion.dirty || direccion.touched)">
+                                <div class="container-error-message" *ngIf="direccion.errors.required">
+                                    (<b>Direccion</b> es requerido)
+                                </div>
+                                <div class="container-error-message" *ngIf="direccion.errors.maxlength">
+                                    (<b>Direccion</b> tener como maximo 100 caracteres)
+                                </div>
+                                <div class="container-error-message" *ngIf="direccion.errors.minlength">
+                                    (<b>Direccion</b> tener como minimo 20 caracteres)
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="telefono">Telefono <span class="text-danger">(*)</span></label>
+                            <input type="text" class="form-control" id="telefono" name="telefono"
+                                formControlName="telefono" required maxlength="9" [(ngModel)]="entidad.telefono">
+                            <div class="alert alert-danger mt-2"
+                                *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
+                                <div class="container-error-message" *ngIf="telefono.errors.required">
+                                    (<b>Telefono</b> es requerido)
+                                </div>
+                                <div class="container-error-message" *ngIf="telefono.errors.minlength">
+                                    (<b>Telefono</b> tener como minimo 9 caracteres)
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="estado">Estado <span class="text-danger">(*)</span></label>
+                            <select name="estado" id="estado" class="form-control" formControlName="estado"
+                                [(ngModel)]="entidad.estado">
+                                <option [value]="opcion.value" *ngFor="let opcion of opciones">
+                                    <td>{{ opcion.text }}</td>
+                                </option>
+                            </select>
+                            <div class="alert alert-danger mt-2"
+                                *ngIf="estado.invalid && (estado.dirty || estado.touched)">
+                                <div class="container-error-message" *ngIf="estado.errors.required">
+                                    (<b>Estado</b> es requerido)
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-footer text-muted">
+                <div class="row">
+                    <div class="col-md-6 text-left">
+                        <span><b>Campos Obligatorios </b> <span class="text-danger">(*)</span></span>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <button class="btn btn-outline-success mr-1" [disabled]="!entidadForm.valid">
+                            <i class="fas fa-pencil-alt"></i> Actualizar</button>
+                        <button class="btn btn-outline-primary" (click)="volver()">
+                            <i class="fas fa-arrow-alt-circle-left"></i> Volver</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

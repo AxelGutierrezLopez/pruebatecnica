@@ -1,0 +1,38 @@
+<app-menu></app-menu>
+<div class="container" *ngIf="tipocontribuyente">
+  <div class="card">
+    <div class="card-header">
+      <h4 class="text-left" style="text-transform: uppercase;"><b>TIPO DE CONTRIBUYENTE</b></h4>
+    </div>
+ 
+      <div class="card-body">
+        <div class="text-left mb-2">
+          <span><b>Datos:</b></span>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><b>NOMBRE: </b>{{tipocontribuyente.nombre}}</li>
+              <li class="list-group-item" *ngIf="tipocontribuyente.estado == true" ><b>ESTADO: </b>ACTIVO</li>
+              <li class="list-group-item" *ngIf="tipocontribuyente.estado == false" ><b>ESTADO: </b>INACTIVO</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="card-footer text-muted">
+        <div class="row">
+          <div class="col-md-6 text-left">
+
+          </div>
+          <div class="col-md-6 text-right">
+            <button class="btn btn-outline-primary" (click)="volver()">
+              <i class="fas fa-arrow-alt-circle-left"></i> Volver</button>
+          </div>
+        </div>
+      </div>
+  
+  </div>
+</div>

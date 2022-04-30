@@ -1,0 +1,100 @@
+<app-menu></app-menu>
+<div class="container" *ngIf="tipodocumento">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="text-left" style="text-transform: uppercase;"><b>ACTUALIZAR TIPO DE DOCUMENTO</b></h4>
+        </div>
+        <form (ngSubmit)="onUpdate()" novalidate [formGroup]="tipodocumentoForm">
+            <div class="card-body">
+                <div class="text-left mb-2">
+                    <span><b>Actualizar datos:</b></span>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="codigo">Codigo <span class="text-danger">(*)</span></label>
+                            <input type="text" class="form-control" id="codigo" name="codigo" formControlName="codigo"
+                                [(ngModel)]="tipodocumento.codigo" required>
+                            <div class="alert alert-danger mt-2"
+                                *ngIf="codigo.invalid && (codigo.dirty || codigo.touched)">
+                                <div class="container-error-message" *ngIf="codigo.errors.required">
+                                    (<b>Codigo</b> es requerido)
+                                </div>
+                                <div class="container-error-message" *ngIf="codigo.errors.maxlength">
+                                    (<b>Codigo</b> tener como maximo 20 caracteres)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="nombre">Nombre <span class="text-danger">(*)</span></label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" formControlName="nombre"
+                                [(ngModel)]="tipodocumento.nombre" required>
+                            <div class="alert alert-danger mt-2"
+                                *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                                <div class="container-error-message" *ngIf="nombre.errors.required">
+                                    (<b>Nombre</b> es requerido)
+                                </div>
+                                <div class="container-error-message" *ngIf="nombre.errors.maxlength">
+                                    (<b>Nombre</b> tener como maximo 100 caracteres)
+                                </div>
+                                <div class="container-error-message" *ngIf="nombre.errors.minlength">
+                                    (<b>Nombre</b> tener como minimo 5 caracteres)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="precio">Descripción <span class="text-danger">(*)</span></label>
+                            <input type="text" class="form-control" id="descripcion" name="descripcion"
+                                formControlName="descripcion" [(ngModel)]="tipodocumento.descripcion" required>
+                            <div class="alert alert-danger mt-2"
+                                *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)">
+                                <div class="container-error-message" *ngIf="descripcion.errors.required">
+                                    (<b>Descripción</b> es requerido)
+                                </div>
+                                <div class="container-error-message" *ngIf="descripcion.errors.maxlength">
+                                    (<b>Descripción</b> tener como maximo 100 caracteres)
+                                </div>
+                                <div class="container-error-message" *ngIf="descripcion.errors.minlength">
+                                    (<b>Descripción</b> tener como minimo 5 caracteres)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="estado">Estado <span class="text-danger">(*)</span></label>
+                            <select name="estado" id="estado" class="form-control" [(ngModel)]="tipodocumento.estado"
+                                formControlName="estado">
+                                <option [value]="opcion.value" *ngFor="let opcion of opciones">
+                                    <td>{{ opcion.text }}</td>
+                                </option>
+                            </select>
+
+                            <div class="alert alert-danger mt-2"
+                                *ngIf="estado.invalid && (estado.dirty || estado.touched)">
+                                <div class="container-error-message" *ngIf="estado.errors.required">
+                                    (<b>Estado</b> es requerido)
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-footer text-muted">
+                <div class="row">
+                    <div class="col-md-6 text-left">
+                        <span><b>Campos Obligatorios </b> <span class="text-danger">(*)</span></span>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <button class="btn btn-outline-success mr-1" [disabled]="!tipodocumentoForm.valid">
+                            <i class="fas fa-pencil-alt"></i> Actualizar</button>
+                        <button class="btn btn-outline-primary" (click)="volver()">
+                            <i class="fas fa-arrow-alt-circle-left"></i> Volver</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

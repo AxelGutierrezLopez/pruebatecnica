@@ -1,0 +1,44 @@
+<app-menu></app-menu>
+
+<div class="container">
+  <h4 class="text-left" style="text-transform: uppercase;"><b>Tipos de Documentos</b></h4>
+  <div class="mt-1 mb-1 text-right">
+    <button type="button" class="btn btn-outline-primary" (click)="crear()"> Nuevo</button>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Codigo</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tipo of tipos">
+        <td>{{tipo.codigo}}</td>
+        <td>{{tipo.nombre}}</td>
+        <td>{{tipo.descripcion}}</td>
+        <td *ngIf="tipo.estado == false">
+          INACTIVO
+        </td>
+        <td *ngIf="tipo.estado == true">
+          ACTIVO
+        </td>
+        <td>
+          <div class="btn-group text-center" role="group">
+            <button type="button" (click)="ver(tipo.id_tipo_documento)" class="btn btn-info"><i
+                class="far fa-eye"></i></button>
+            <button  (click)="editar(tipo.id_tipo_documento)" class="btn btn-warning"><i
+                class="far fa-edit"></i></button>
+            <button (click)="borrar(tipo.id_tipo_documento,tipo.nombre)" class="btn btn-danger"><i
+                class="far fa-trash-alt"></i></button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+</div>

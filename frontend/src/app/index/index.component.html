@@ -1,0 +1,49 @@
+<app-menu></app-menu>
+<div class="container text-center">
+    <div *ngIf="isLogged; else loggedOut">
+        <h2>Bienvenido Usuario {{nombreUsuario}}</h2>
+
+        <div class="container">
+            <div class="text-left">
+                <span><b>Mantenimientos:</b></span>
+            </div>
+            <div class="card-deck mb-3 mt-3 text-center">
+                <div class="card mb-4 box-shadow">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Tipo documento</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title"><i class="fas fa-cog fa-4x"></i></h1>
+                        <button type="button" (click)="tipodocumento()"
+                            class="btn btn-lg btn-block btn-outline-primary">Ir</button>
+                    </div>
+                </div>
+                <div class="card mb-4 box-shadow">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Entidad</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title"><i class="fas fa-cog fa-4x"></i></h1>
+                        <button type="button" (click)="entidad()"
+                            class="btn btn-lg btn-block btn-outline-primary">Ir</button>
+                    </div>
+                </div>
+                <div class="card mb-4 box-shadow">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">Tipo contribuyente</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title"><i class="fas fa-cog fa-4x"></i></h1>
+                        <button type="button" (click)="tipocontribuyente()"
+                            class="btn btn-lg btn-block btn-outline-primary">Ir</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #loggedOut>
+        <h2>No has iniciado sesión</h2>
+    </ng-template>
+
+
+</div>

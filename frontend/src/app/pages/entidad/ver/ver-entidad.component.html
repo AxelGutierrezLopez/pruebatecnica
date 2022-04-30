@@ -1,0 +1,44 @@
+<app-menu></app-menu>
+<div class="container" *ngIf="entidad">
+  <div class="card">
+    <div class="card-header">
+      <h4 class="text-left" style="text-transform: uppercase;"><b>ENTIDAD</b></h4>
+    </div>
+ 
+      <div class="card-body">
+        <div class="text-left mb-2">
+          <span><b>Datos:</b></span>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><b>TIPO DOCUMENTO: </b>{{entidad.tipodocumento.nombre}}</li>
+              <li class="list-group-item"><b>NRO DOCUMENTO: </b>{{entidad.nrodocumento}}</li>
+              <li class="list-group-item"><b>RAZON SOCIAL: </b>{{entidad.razonsocial}}</li>
+              <li class="list-group-item"><b>NOMBRE COMERCIAL: </b>{{entidad.nombrecomercial}}</li>
+              <li class="list-group-item"><b>TIPO CONTRIBUYENTE: </b>{{entidad.tipocontribuyente.nombre}}</li>
+              <li class="list-group-item"><b>DIRECCION: </b>{{entidad.direccion}}</li>
+              <li class="list-group-item"><b>TELEFONO: </b>{{entidad.telefono}}</li>
+              <li class="list-group-item" *ngIf="entidad.estado == true" ><b>ESTADO: </b>ACTIVO</li>
+              <li class="list-group-item" *ngIf="entidad.estado == false" ><b>ESTADO: </b>INACTIVO</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="card-footer text-muted">
+        <div class="row">
+          <div class="col-md-6 text-left">
+
+          </div>
+          <div class="col-md-6 text-right">
+            <button class="btn btn-outline-primary" (click)="volver()">
+              <i class="fas fa-arrow-alt-circle-left"></i> Volver</button>
+          </div>
+        </div>
+      </div>
+  
+  </div>
+</div>

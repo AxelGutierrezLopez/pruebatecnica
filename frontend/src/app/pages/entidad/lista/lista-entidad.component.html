@@ -1,0 +1,44 @@
+<app-menu></app-menu>
+
+<div class="container">
+  <h4 class="text-left" style="text-transform: uppercase;"><b>Entidades</b></h4>
+  <div class="mt-1 mb-1 text-right">
+    <button type="button" class="btn btn-outline-primary" (click)="crear()"> Nuevo</button>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Nro. Documento</th>
+        <th scope="col">Razon Social</th>
+        <th scope="col">Nombre Comercial</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let entidad of entidades">
+        <td>{{entidad.nrodocumento}}</td>
+        <td>{{entidad.razonsocial}}</td>
+        <td>{{entidad.nombrecomercial}}</td>
+        <td *ngIf="entidad.estado == false">
+          INACTIVO
+        </td>
+        <td *ngIf="entidad.estado == true">
+          ACTIVO
+        </td>
+        <td>
+          <div class="btn-group text-center" role="group">
+            <button type="button" (click)="ver(entidad.id_entidad)" class="btn btn-info"><i
+                class="far fa-eye"></i></button>
+            <button  (click)="editar(entidad.id_entidad)" class="btn btn-warning"><i
+                class="far fa-edit"></i></button>
+            <button  (click)="borrar(entidad.id_entidad,entidad.razonsocial)" class="btn btn-danger"><i
+                class="far fa-trash-alt"></i></button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+</div>
